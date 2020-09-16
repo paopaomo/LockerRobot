@@ -35,4 +35,15 @@ public class LockerTest {
 
         Assert.assertEquals(bag, retrieveBag);
     }
+
+    @Test
+    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_a_duplicate_receipt() {
+        Locker locker = new Locker(10);
+        Receipt receipt = locker.saveBag(new Bag());
+        locker.takeBag(receipt);
+
+        assertThrows(ReceiptIsInvalidException.class, () -> {
+            locker.takeBag(receipt);
+        });
+    }
 }

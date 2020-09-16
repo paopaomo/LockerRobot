@@ -20,7 +20,10 @@ public class Locker {
     }
 
     public Bag takeBag(Receipt receipt) {
-        return bags.get(receipt);
+        if(bags.containsKey(receipt)) {
+            return bags.remove(receipt);
+        }
+        throw new ReceiptIsInvalidException();
     }
 
     private boolean hasAvailableCapacity() {
