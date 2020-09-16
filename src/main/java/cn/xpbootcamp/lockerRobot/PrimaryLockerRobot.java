@@ -15,6 +15,6 @@ public class PrimaryLockerRobot {
                 return locker.saveBag(bag);
             }
         }
-        return null;
+        throw new LockerIsFullException();
     }
 }
