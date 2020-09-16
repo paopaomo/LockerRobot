@@ -47,4 +47,15 @@ public class PrimaryLockerRobotTest {
             primaryLockerRobot.saveBag(new Bag());
         });
     }
+
+    @Test
+    public void should_return_the_right_bag_when_take_bag_given_a_valid_receipt() {
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(List.of(new Locker(10)));
+        Bag bag = new Bag();
+        Receipt receipt = primaryLockerRobot.saveBag(bag);
+
+        Bag retrieveBag = primaryLockerRobot.takeBag(receipt);
+
+        Assert.assertEquals(bag, retrieveBag);
+    }
 }

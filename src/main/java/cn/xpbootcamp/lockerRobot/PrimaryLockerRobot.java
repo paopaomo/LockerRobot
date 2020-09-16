@@ -17,4 +17,13 @@ public class PrimaryLockerRobot {
         }
         throw new LockerIsFullException();
     }
+
+    public Bag takeBag(Receipt receipt) {
+        for (Locker locker : lockers) {
+            if(locker.containsReceipt(receipt)) {
+                return locker.takeBag(receipt);
+            }
+        }
+        return null;
+    }
 }
