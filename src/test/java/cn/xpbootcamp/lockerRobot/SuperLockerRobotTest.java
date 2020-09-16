@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class SuperLockerRobotTest {
     @Test
     public void should_save_to_locker1_and_return_a_receipt_when_save_bag_given_robot_has_2_lockers_locker1_has_5_and_locker2_has_3_available_capacity() {
@@ -28,5 +30,18 @@ public class SuperLockerRobotTest {
         Receipt receipt = superLockerRobot.saveBag(bag);
 
         Assert.assertEquals(bag, locker2.takeBag(receipt));
+    }
+
+    @Test
+    public void should_throw_LockerIsFullException_when_save_bag_given_robot_has_2_lockers_are_both_full() {
+        Locker locker1 = new Locker(1);
+        Locker locker2 = new Locker(1);
+        locker1.saveBag(new Bag());
+        locker2.saveBag(new Bag());
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(List.of(locker1, locker2));
+
+        assertThrows(LockerIsFullException.class, () -> {
+            superLockerRobot.saveBag(new Bag());
+        });
     }
 }
