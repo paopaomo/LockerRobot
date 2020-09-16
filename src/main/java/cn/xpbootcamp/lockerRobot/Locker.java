@@ -33,4 +33,8 @@ public class Locker {
     public boolean containsReceipt(Receipt receipt) {
         return bags.containsKey(receipt);
     }
+
+    public int getAvailableCapacity() {
+        return capacity - bags.size();
+    }
 }
