@@ -20,7 +20,7 @@ public class SuperLockerRobot {
                 return locker.takeBag(receipt);
             }
         }
-        return null;
+        throw new ReceiptIsInvalidException();
     }
 
     private Locker getLockerWithMaximumCapacity() {

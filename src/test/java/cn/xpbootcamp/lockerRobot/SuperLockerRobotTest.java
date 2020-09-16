@@ -55,4 +55,13 @@ public class SuperLockerRobotTest {
 
         Assert.assertEquals(bag, retrieveBag);
     }
+
+    @Test
+    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_an_invalid_receipt() {
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(List.of(new Locker(10)));
+
+        assertThrows(ReceiptIsInvalidException.class, () -> {
+            superLockerRobot.takeBag(null);
+        });
+    }
 }
