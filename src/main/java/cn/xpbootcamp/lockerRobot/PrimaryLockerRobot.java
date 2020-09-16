@@ -10,6 +10,11 @@ public class PrimaryLockerRobot {
     }
 
     public Receipt saveBag(Bag bag) {
-        return lockers.get(0).saveBag(bag);
+        for (Locker locker : lockers) {
+            if(locker.hasAvailableCapacity()) {
+                return locker.saveBag(bag);
+            }
+        }
+        return null;
     }
 }

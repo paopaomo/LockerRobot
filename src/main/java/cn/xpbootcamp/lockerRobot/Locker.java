@@ -26,7 +26,7 @@ public class Locker {
         throw new ReceiptIsInvalidException();
     }
 
-    private boolean hasAvailableCapacity() {
+    public boolean hasAvailableCapacity() {
         return bags.size() < capacity;
     }
 }
