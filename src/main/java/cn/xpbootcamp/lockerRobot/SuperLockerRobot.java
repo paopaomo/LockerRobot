@@ -14,6 +14,15 @@ public class SuperLockerRobot {
         return maxLocker.saveBag(bag);
     }
 
+    public Bag takeBag(Receipt receipt) {
+        for (Locker locker : lockers) {
+            if(locker.containsReceipt(receipt)) {
+                return locker.takeBag(receipt);
+            }
+        }
+        return null;
+    }
+
     private Locker getLockerWithMaximumCapacity() {
         Locker maxLocker = lockers.get(0);
         for (int i = 1; i < lockers.size(); i++) {

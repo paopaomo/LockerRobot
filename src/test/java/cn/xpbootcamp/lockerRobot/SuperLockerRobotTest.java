@@ -44,4 +44,15 @@ public class SuperLockerRobotTest {
             superLockerRobot.saveBag(new Bag());
         });
     }
+
+    @Test
+    public void should_return_the_right_bag_when_take_bag_given_a_valid_receipt() {
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(List.of(new Locker(10)));
+        Bag bag = new Bag();
+        Receipt receipt = superLockerRobot.saveBag(bag);
+
+        Bag retrieveBag = superLockerRobot.takeBag(receipt);
+
+        Assert.assertEquals(bag, retrieveBag);
+    }
 }
