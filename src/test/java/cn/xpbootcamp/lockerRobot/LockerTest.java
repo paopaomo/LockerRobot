@@ -48,7 +48,7 @@ public class LockerTest {
     }
 
     @Test
-    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_a_invalid_receipt() {
+    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_an_invalid_receipt() {
         Locker locker = new Locker(10);
 
         assertThrows(ReceiptIsInvalidException.class, () -> {
