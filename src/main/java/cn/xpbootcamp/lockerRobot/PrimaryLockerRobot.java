@@ -24,6 +24,6 @@ public class PrimaryLockerRobot {
                 return locker.takeBag(receipt);
             }
         }
-        return null;
+        throw new ReceiptIsInvalidException();
     }
 }

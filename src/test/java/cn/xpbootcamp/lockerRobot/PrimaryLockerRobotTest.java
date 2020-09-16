@@ -58,4 +58,13 @@ public class PrimaryLockerRobotTest {
 
         Assert.assertEquals(bag, retrieveBag);
     }
+
+    @Test
+    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_an_invalid_receipt() {
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(List.of(new Locker(10)));
+
+        assertThrows(ReceiptIsInvalidException.class, () -> {
+            primaryLockerRobot.takeBag(null);
+        });
+    }
 }
