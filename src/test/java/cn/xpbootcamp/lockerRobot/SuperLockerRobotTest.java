@@ -46,6 +46,18 @@ public class SuperLockerRobotTest {
     }
 
     @Test
+    public void should_save_to_locker1_and_return_a_receipt_when_save_bag_given_robot_has_2_lockers_has_the_same_available_capacity() {
+        Locker locker1 = new Locker(2);
+        Locker locker2 = new Locker(2);
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(List.of(locker1, locker2));
+
+        Bag bag = new Bag();
+        Receipt receipt = superLockerRobot.saveBag(bag);
+
+        Assert.assertEquals(bag, locker1.takeBag(receipt));
+    }
+
+    @Test
     public void should_return_the_right_bag_when_take_bag_given_a_valid_receipt() {
         SuperLockerRobot superLockerRobot = new SuperLockerRobot(List.of(new Locker(10)));
         Bag bag = new Bag();

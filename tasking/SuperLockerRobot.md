@@ -20,6 +20,12 @@ When SuperLockerRobot 存包
 
 Then 提示locker已满,存包失败
 
+4.Given SuperLockerRobot管理两个locker，可用容量均为2
+
+When SuperLockerRobot 存包
+
+Then 存入locker1中，返回小票，存包成功
+
 #### 取包
 
 1.Given 正确小票
