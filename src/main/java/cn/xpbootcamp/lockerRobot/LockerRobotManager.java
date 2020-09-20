@@ -28,6 +28,15 @@ public class LockerRobotManager {
         }
     }
 
+    public Bag takeBag(Receipt receipt) {
+        switch (receipt.getBagSize()) {
+            case S:
+                return takeBagByStorage(receipt, lockers);
+            default:
+                return null;
+        }
+    }
+
     private Receipt saveBagByStorable(Bag bag, List<Storable> storables) {
         for (Storable storable : storables) {
             if(storable.hasAvailableCapacity()) {
@@ -35,5 +44,14 @@ public class LockerRobotManager {
             }
         }
         throw new LockerIsFullException();
+    }
+
+    private Bag takeBagByStorage(Receipt receipt, List<Storable> storables) {
+        for (Storable storable : storables) {
+            if(storable.containsReceipt(receipt)) {
+                return storable.takeBag(receipt);
+            }
+        }
+        return null;
     }
 }

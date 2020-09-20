@@ -13,7 +13,7 @@ public class Locker implements Storable {
     @Override
     public Receipt saveBag(Bag bag) {
         if(hasAvailableCapacity()) {
-            Receipt receipt = new Receipt();
+            Receipt receipt = new Receipt(bag.getBagSize());
             bags.put(receipt, bag);
             return receipt;
         }
@@ -28,10 +28,12 @@ public class Locker implements Storable {
         throw new ReceiptIsInvalidException();
     }
 
+    @Override
     public boolean hasAvailableCapacity() {
         return bags.size() < capacity;
     }
 
+    @Override
     public boolean containsReceipt(Receipt receipt) {
         return bags.containsKey(receipt);
     }

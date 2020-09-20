@@ -31,4 +31,14 @@ public abstract class Robot implements Storable {
         }
         return false;
     }
+
+    @Override
+    public boolean containsReceipt(Receipt receipt) {
+        for (Locker locker : lockers) {
+            if(locker.containsReceipt(receipt)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

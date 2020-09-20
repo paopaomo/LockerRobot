@@ -6,4 +6,6 @@ public interface Storable {
     Bag takeBag(Receipt receipt);
 
     boolean hasAvailableCapacity();
+
+    boolean containsReceipt(Receipt receipt);
 }

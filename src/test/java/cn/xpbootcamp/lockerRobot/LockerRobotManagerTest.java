@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LockerRobotManagerTest {
@@ -108,5 +109,22 @@ public class LockerRobotManagerTest {
         assertThrows(LockerIsFullException.class, () -> {
             lockerRobotManager.saveBag(new Bag(BagSize.L));
         });
+    }
+
+    @Test
+    public void should_take_the_right_bag_when_take_bag_given_a_valid_s_receipt() {
+        Locker locker = new Locker(10);
+        PrimaryLockerRobot primaryLockerRobot =
+                new PrimaryLockerRobot(List.of(new Locker(10)));
+        SuperLockerRobot superLockerRobot =
+                new SuperLockerRobot(List.of(new Locker(10)));
+        LockerRobotManager lockerRobotManager =
+                new LockerRobotManager(List.of(locker), List.of(primaryLockerRobot), List.of(superLockerRobot));
+        Bag bag = new Bag(BagSize.S);
+        Receipt receipt = lockerRobotManager.saveBag(bag);
+
+        Bag retrieveBag = lockerRobotManager.takeBag(receipt);
+
+        assertEquals(bag, retrieveBag);
     }
 }
