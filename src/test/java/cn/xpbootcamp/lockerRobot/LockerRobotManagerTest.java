@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LockerRobotManagerTest {
     @Test
-    public void should_save_to_locker_and_return_a_receipt_when_save_s_size_bag_given_manage_1_locker_1_PrimaryLockerRobot_1_SuperLockerRobot_all_have_available_capacity() {
+    public void should_save_to_locker_and_return_a_receipt_when_save_s_size_bag_given_manage_1_locker_1_primaryLockerRobot_1_superLockerRobot_all_have_available_capacity() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(10)));
@@ -26,7 +26,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_throw_LockerIsFullException_when_save_s_size_bag_given_manage_1_locker_1_PrimaryLockerRobot_1_SuperLockerRobot_and_locker_is_full() {
+    public void should_throw_LockerIsFullException_when_save_s_size_bag_given_manage_1_locker_1_primaryLockerRobot_1_superLockerRobot_and_locker_is_full() {
         Locker locker = new Locker(1);
         locker.saveBag(new Bag(BagSize.S));
         PrimaryLockerRobot primaryLockerRobot =
@@ -43,7 +43,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_save_to_primaryLockerRobot_and_return_a_receipt_when_save_m_size_bag_given_manage_1_locker_1_PrimaryLockerRobot_1_SuperLockerRobot_all_have_available_capacity() {
+    public void should_save_to_primaryLockerRobot_and_return_a_receipt_when_save_m_size_bag_given_manage_1_locker_1_primaryLockerRobot_1_superLockerRobot_all_have_available_capacity() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(10)));
@@ -60,7 +60,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_throw_LockerIsFullException_when_save_m_size_bag_given_manage_1_locker_1_PrimaryLockerRobot_1_SuperLockerRobot_and_PrimaryLockerRobot_is_full() {
+    public void should_throw_LockerIsFullException_when_save_m_size_bag_given_manage_1_locker_1_primaryLockerRobot_1_superLockerRobot_and_primaryLockerRobot_is_full() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(1)));
