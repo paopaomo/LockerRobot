@@ -75,4 +75,21 @@ public class LockerRobotManagerTest {
             lockerRobotManager.saveBag(new Bag(BagSize.M));
         });
     }
+
+    @Test
+    public void should_save_to_superLockerRobot_and_return_a_receipt_when_save_l_size_bag_given_manage_1_locker_1_primaryLockerRobot_1_superLockerRobot_all_have_available_capacity() {
+        Locker locker = new Locker(10);
+        PrimaryLockerRobot primaryLockerRobot =
+                new PrimaryLockerRobot(List.of(new Locker(10)));
+        SuperLockerRobot superLockerRobot =
+                new SuperLockerRobot(List.of(new Locker(10)));
+        LockerRobotManager lockerRobotManager =
+                new LockerRobotManager(List.of(locker), List.of(primaryLockerRobot), List.of(superLockerRobot));
+
+        Bag bag = new Bag(BagSize.L);
+        Receipt receipt = lockerRobotManager.saveBag(bag);
+
+        Assert.assertNotNull(receipt);
+        Assert.assertEquals(bag, superLockerRobot.takeBag(receipt));
+    }
 }

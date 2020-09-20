@@ -21,6 +21,8 @@ public class LockerRobotManager {
                 return saveBagByStorable(bag, lockers);
             case M:
                 return saveBagByStorable(bag, primaryLockerRobots);
+            case L:
+                return saveBagByStorable(bag, superLockerRobots);
             default:
                 return null;
         }
