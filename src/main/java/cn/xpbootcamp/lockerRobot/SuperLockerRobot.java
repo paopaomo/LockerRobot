@@ -2,25 +2,15 @@ package cn.xpbootcamp.lockerRobot;
 
 import java.util.List;
 
-public class SuperLockerRobot {
-    private List<Locker> lockers;
-
+public class SuperLockerRobot extends Robot {
     public SuperLockerRobot(List<Locker> lockers) {
-        this.lockers = lockers;
+        super(lockers);
     }
 
+    @Override
     public Receipt saveBag(Bag bag) {
         Locker maxLocker = getLockerWithMaximumCapacity();
         return maxLocker.saveBag(bag);
-    }
-
-    public Bag takeBag(Receipt receipt) {
-        for (Locker locker : lockers) {
-            if(locker.containsReceipt(receipt)) {
-                return locker.takeBag(receipt);
-            }
-        }
-        throw new ReceiptIsInvalidException();
     }
 
     private Locker getLockerWithMaximumCapacity() {

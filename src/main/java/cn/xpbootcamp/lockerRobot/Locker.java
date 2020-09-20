@@ -2,7 +2,7 @@ package cn.xpbootcamp.lockerRobot;
 
 import java.util.HashMap;
 
-public class Locker {
+public class Locker implements Storable {
     private int capacity;
     private HashMap<Receipt, Bag> bags = new HashMap<>();
 
@@ -10,6 +10,7 @@ public class Locker {
         this.capacity = capacity;
     }
 
+    @Override
     public Receipt saveBag(Bag bag) {
         if(hasAvailableCapacity()) {
             Receipt receipt = new Receipt();
@@ -19,6 +20,7 @@ public class Locker {
         throw new LockerIsFullException();
     }
 
+    @Override
     public Bag takeBag(Receipt receipt) {
         if(bags.containsKey(receipt)) {
             return bags.remove(receipt);

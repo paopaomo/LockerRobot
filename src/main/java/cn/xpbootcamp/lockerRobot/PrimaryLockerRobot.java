@@ -2,13 +2,12 @@ package cn.xpbootcamp.lockerRobot;
 
 import java.util.List;
 
-public class PrimaryLockerRobot {
-    private List<Locker> lockers;
-
+public class PrimaryLockerRobot extends Robot {
     public PrimaryLockerRobot(List<Locker> lockers) {
-        this.lockers = lockers;
+        super(lockers);
     }
 
+    @Override
     public Receipt saveBag(Bag bag) {
         for (Locker locker : lockers) {
             if(locker.hasAvailableCapacity()) {
@@ -16,14 +15,5 @@ public class PrimaryLockerRobot {
             }
         }
         throw new LockerIsFullException();
-    }
-
-    public Bag takeBag(Receipt receipt) {
-        for (Locker locker : lockers) {
-            if(locker.containsReceipt(receipt)) {
-                return locker.takeBag(receipt);
-            }
-        }
-        throw new ReceiptIsInvalidException();
     }
 }
