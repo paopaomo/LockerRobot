@@ -163,7 +163,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_a_invalid_receipt() {
+    public void should_throw_ReceiptIsInvalidException_when_take_bag_given_an_invalid_receipt() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(10)));
@@ -174,6 +174,22 @@ public class LockerRobotManagerTest {
 
         assertThrows(ReceiptIsInvalidException.class, () -> {
             lockerRobotManager.takeBag(null);
+        });
+    }
+
+    @Test
+    public void should_throw_ReceiptIsInvalidException_when_take_m_bag_given_a_valid_s_receipt() {
+        Locker locker = new Locker(10);
+        PrimaryLockerRobot primaryLockerRobot =
+                new PrimaryLockerRobot(List.of(new Locker(10)));
+        SuperLockerRobot superLockerRobot =
+                new SuperLockerRobot(List.of(new Locker(10)));
+        LockerRobotManager lockerRobotManager =
+                new LockerRobotManager(List.of(locker), List.of(primaryLockerRobot), List.of(superLockerRobot));
+        lockerRobotManager.saveBag(new Bag(BagSize.M));
+
+        assertThrows(ReceiptIsInvalidException.class, () -> {
+            lockerRobotManager.takeBag(new Receipt(BagSize.S));
         });
     }
 }

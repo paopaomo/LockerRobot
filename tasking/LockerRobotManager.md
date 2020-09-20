@@ -69,3 +69,9 @@ Then 取出正确的包裹, 取包成功
 When LockerRobotManager取包
 
 Then 提示小票不正确, 取包失败
+
+5.Given S号小票
+
+When LockerRobotManager取M号包
+
+Then 提示小票不正确, 取包失败
