@@ -127,4 +127,21 @@ public class LockerRobotManagerTest {
 
         assertEquals(bag, retrieveBag);
     }
+
+    @Test
+    public void should_take_the_right_bag_when_take_bag_given_a_valid_m_receipt() {
+        Locker locker = new Locker(10);
+        PrimaryLockerRobot primaryLockerRobot =
+                new PrimaryLockerRobot(List.of(new Locker(10)));
+        SuperLockerRobot superLockerRobot =
+                new SuperLockerRobot(List.of(new Locker(10)));
+        LockerRobotManager lockerRobotManager =
+                new LockerRobotManager(List.of(locker), List.of(primaryLockerRobot), List.of(superLockerRobot));
+        Bag bag = new Bag(BagSize.M);
+        Receipt receipt = lockerRobotManager.saveBag(bag);
+
+        Bag retrieveBag = lockerRobotManager.takeBag(receipt);
+
+        assertEquals(bag, retrieveBag);
+    }
 }

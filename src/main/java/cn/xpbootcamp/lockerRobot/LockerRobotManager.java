@@ -32,6 +32,8 @@ public class LockerRobotManager {
         switch (receipt.getBagSize()) {
             case S:
                 return takeBagByStorage(receipt, lockers);
+            case M:
+                return takeBagByStorage(receipt, primaryLockerRobots);
             default:
                 return null;
         }
