@@ -29,6 +29,9 @@ public class LockerRobotManager {
     }
 
     public Bag takeBag(Receipt receipt) {
+        if(receipt == null) {
+            throw new ReceiptIsInvalidException();
+        }
         switch (receipt.getBagSize()) {
             case S:
                 return takeBagByStorage(receipt, lockers);
@@ -37,7 +40,7 @@ public class LockerRobotManager {
             case L:
                 return takeBagByStorage(receipt, superLockerRobots);
             default:
-                return null;
+                throw new ReceiptIsInvalidException();
         }
     }
 
@@ -56,6 +59,6 @@ public class LockerRobotManager {
                 return storable.takeBag(receipt);
             }
         }
-        return null;
+        throw new ReceiptIsInvalidException();
     }
 }
