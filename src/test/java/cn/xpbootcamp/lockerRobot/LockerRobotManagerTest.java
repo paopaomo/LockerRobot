@@ -112,7 +112,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_take_the_right_bag_when_take_bag_given_a_valid_s_receipt() {
+    public void should_take_the_right_bag_when_take_s_bag_given_a_valid_s_receipt() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(10)));
@@ -129,7 +129,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_take_the_right_bag_when_take_bag_given_a_valid_m_receipt() {
+    public void should_take_the_right_bag_when_take_m_bag_given_a_valid_m_receipt() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(10)));
@@ -146,7 +146,7 @@ public class LockerRobotManagerTest {
     }
 
     @Test
-    public void should_take_the_right_bag_when_take_bag_given_a_valid_l_receipt() {
+    public void should_take_the_right_bag_when_take_l_bag_given_a_valid_l_receipt() {
         Locker locker = new Locker(10);
         PrimaryLockerRobot primaryLockerRobot =
                 new PrimaryLockerRobot(List.of(new Locker(10)));
