@@ -1,18 +1,18 @@
 package cn.xpbootcamp.lockerRobot;
 
 public class Bag {
-    private bagSize size;
+    private BagSize size;
 
-    public Bag(bagSize size) {
+    public Bag(BagSize size) {
         this.size = size;
     }
 
-    public bagSize getBagSize() {
+    public BagSize getBagSize() {
         return size;
     }
 }
 
-enum bagSize {
+enum BagSize {
     S,
     M,
     L

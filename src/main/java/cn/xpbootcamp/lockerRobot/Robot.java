@@ -21,4 +21,14 @@ public abstract class Robot implements Storable {
         }
         throw new ReceiptIsInvalidException();
     }
+
+    @Override
+    public boolean hasAvailableCapacity() {
+        for (Locker locker : lockers) {
+            if(locker.hasAvailableCapacity()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

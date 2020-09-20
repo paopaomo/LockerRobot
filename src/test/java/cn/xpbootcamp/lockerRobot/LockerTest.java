@@ -10,7 +10,7 @@ public class LockerTest {
     public void should_return_a_receipt_when_save_bag_given_a_locker_has_available_capacity() {
         Locker locker = new Locker(10);
 
-        Receipt receipt = locker.saveBag(new Bag(bagSize.S));
+        Receipt receipt = locker.saveBag(new Bag(BagSize.S));
 
         Assert.assertNotNull(receipt);
     }
@@ -18,17 +18,17 @@ public class LockerTest {
     @Test
     public void should_throw_LockerIsFullException_when_save_bag_given_a_locker_has_no_available_capacity() {
         Locker locker = new Locker(1);
-        locker.saveBag(new Bag(bagSize.S));
+        locker.saveBag(new Bag(BagSize.S));
 
         assertThrows(LockerIsFullException.class, () -> {
-            locker.saveBag(new Bag(bagSize.S));
+            locker.saveBag(new Bag(BagSize.S));
         });
     }
 
     @Test
     public void should_return_the_right_bag_when_take_bag_given_a_valid_receipt() {
         Locker locker = new Locker(10);
-        Bag bag = new Bag(bagSize.S);
+        Bag bag = new Bag(BagSize.S);
         Receipt receipt = locker.saveBag(bag);
 
         Bag retrieveBag = locker.takeBag(receipt);
@@ -39,7 +39,7 @@ public class LockerTest {
     @Test
     public void should_throw_ReceiptIsInvalidException_when_take_bag_given_a_duplicate_receipt() {
         Locker locker = new Locker(10);
-        Receipt receipt = locker.saveBag(new Bag(bagSize.S));
+        Receipt receipt = locker.saveBag(new Bag(BagSize.S));
         locker.takeBag(receipt);
 
         assertThrows(ReceiptIsInvalidException.class, () -> {
