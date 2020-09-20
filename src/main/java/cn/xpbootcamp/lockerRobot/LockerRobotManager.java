@@ -18,16 +18,18 @@ public class LockerRobotManager {
     public Receipt saveBag(Bag bag) {
         switch (bag.getBagSize()) {
             case S:
-                return saveBagByLocker(bag);
+                return saveBagByStorable(bag, lockers);
+            case M:
+                return saveBagByStorable(bag, primaryLockerRobots);
             default:
                 return null;
         }
     }
 
-    private Receipt saveBagByLocker(Bag bag) {
-        for (Storable locker : lockers) {
-            if(locker.hasAvailableCapacity()) {
-                return locker.saveBag(bag);
+    private Receipt saveBagByStorable(Bag bag, List<Storable> storables) {
+        for (Storable storable : storables) {
+            if(storable.hasAvailableCapacity()) {
+                return storable.saveBag(bag);
             }
         }
         throw new LockerIsFullException();
