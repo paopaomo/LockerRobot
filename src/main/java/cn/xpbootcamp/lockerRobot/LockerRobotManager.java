@@ -34,6 +34,8 @@ public class LockerRobotManager {
                 return takeBagByStorage(receipt, lockers);
             case M:
                 return takeBagByStorage(receipt, primaryLockerRobots);
+            case L:
+                return takeBagByStorage(receipt, superLockerRobots);
             default:
                 return null;
         }
